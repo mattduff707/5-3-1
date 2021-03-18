@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Form from "./components/Form";
+import Results from "./components/Results";
 
 function App() {
+  const lifts = ["squat", "bench", "deadlift", "press"];
+  const defaultMax = 0;
+
+  const setDefaultLifts = (arr, defaultMaxVal) => {
+    const initialVal = {};
+    return arr.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item]: defaultMaxVal,
+      };
+    }, initialVal);
+  };
+
+  const handleChange = (e) => {
+    const newState = { ...state, [e.target.id]: e.target.value };
+    setState(() => {
+      return newState;
+    });
+  };
+
+  const [state, setState] = useState(setDefaultLifts(lifts, defaultMax));
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form state={state} handleChange={handleChange} />
+      <Results state={state} lifts={lifts} />
     </div>
   );
 }
