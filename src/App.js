@@ -5,17 +5,19 @@ import Results from "./components/Results";
 function App() {
   const lifts = ["squat", "bench", "deadlift", "press"];
   const defaultMax = 200;
-  const training = `Training`;
+
   const trainingMaxMultiplier = 0.9;
 
   // Initializes default state values based on the lifts array and defaultMax value
-  const setDefaultLifts = (arr, defaultMaxVal) => {
+  const setDefaultLifts = (arr, val) => {
     const initialObj = {};
     return arr.reduce((obj, item) => {
       return {
         ...obj,
-        [item]: defaultMaxVal,
-        [item + training]: defaultMaxVal * trainingMaxMultiplier,
+        [item]: {
+          trueMax: val,
+          trainingMax: val * trainingMaxMultiplier,
+        },
       };
     }, initialObj);
   };
@@ -25,8 +27,10 @@ function App() {
   const handleChange = (e) => {
     const newState = {
       ...liftMaxState,
-      [e.target.id]: e.target.value,
-      [e.target.id + training]: e.target.value * trainingMaxMultiplier,
+      [e.target.id]: {
+        trueMax: e.target.value,
+        trainingMax: e.target.value * trainingMaxMultiplier,
+      },
     };
     setLiftMaxState(() => {
       return newState;

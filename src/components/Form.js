@@ -8,7 +8,7 @@ const Form = ({ liftMaxState, handleChange, lifts }) => {
           <LiftMaxInput
             key={lift}
             liftName={lift}
-            liftValue={liftMaxState[lift]}
+            liftValue={liftMaxState[lift].trueMax}
             handleChange={handleChange}
           />
         );

@@ -10,17 +10,17 @@ const Table = styled.table`
 `;
 
 const LiftTable = ({ liftMaxState, lifts }) => {
-  const trainingTag = `Training`;
+  // const trainingTag = `Training`;
 
-  const isolateTrainingLift = (liftStr, stateObj) => {
-    const trainingLift = liftStr + trainingTag;
-    const liftPair = Object.entries(stateObj).filter(([key]) => {
-      return key === trainingLift;
-    });
-    const isolatedLift = Object.fromEntries(liftPair);
+  // const isolateTrainingLift = (liftStr, stateObj) => {
+  //   const trainingLift = liftStr + trainingTag;
+  //   const liftPair = Object.entries(stateObj).filter(([key]) => {
+  //     return key === trainingLift;
+  //   });
+  //   const isolatedLift = Object.fromEntries(liftPair);
 
-    return isolatedLift[trainingLift];
-  };
+  //   return isolatedLift[trainingLift];
+  // };
 
   // const weeklyPercentages = {
   //   "Week One": [0.65, 0.75, 0.85],
@@ -52,7 +52,7 @@ const LiftTable = ({ liftMaxState, lifts }) => {
             return (
               <th id={tableHead + lift} key={tableHead + lift}>
                 <h2 style={{ textTransform: "capitalize" }}>{lift}</h2>
-                <TrainingMax liftValue={liftMaxState[lift + trainingTag]} />
+                <TrainingMax liftValue={liftMaxState[lift].trainingMax} />
               </th>
             );
           })}
@@ -79,7 +79,7 @@ const LiftTable = ({ liftMaxState, lifts }) => {
                     key={key + lift}
                     weekNum={key}
                     weeklyPercentages={value.percentages}
-                    liftTrainingMax={isolateTrainingLift(lift, liftMaxState)}
+                    liftTrainingMax={liftMaxState[lift].trainingMax}
                     reps={value.reps}
                   />
                 );
