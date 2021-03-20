@@ -44,6 +44,7 @@ function App() {
         lifts={lifts}
         handleChange={handleChange}
       />
+
       <Results liftMaxState={liftMaxState} lifts={lifts} />
     </div>
   );

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import TrainingMax from "./TrainingMax";
-import randomKeyGenerator from "../helpers/randomKeyGenerator";
 import WeeklyLifts from "./WeeklyLifts";
 
 const Table = styled.table`
@@ -23,17 +22,24 @@ const LiftTable = ({ liftMaxState, lifts }) => {
     return isolatedLift[trainingLift];
   };
 
+  // const weeklyPercentages = {
+  //   "Week One": [0.65, 0.75, 0.85],
+  //   "Week Two": [0.7, 0.8, 0.9],
+  //   "Week Three": [0.75, 0.85, 0.95],
+  //   "Week Four": [0.4, 0.5, 0.6],
+  // };
+
+  // const repsByWeek = {
+  //   "Week One": 5,
+  //   "Week Two": 3,
+  //   "Week Three": 1,
+  //   "Week Four": 5,
+  // };
   const weeklyPercentages = {
-    "Week One": [0.65, 0.75, 0.85],
-    "Week Two": [0.7, 0.8, 0.9],
-    "Week Three": [0.75, 0.85, 0.95],
-    "Week Four": [0.4, 0.5, 0.6],
-  };
-  const repsByWeek = {
-    "Week One": 5,
-    "Week Two": 3,
-    "Week Three": 1,
-    "Week Four": 5,
+    "Week One": { percentages: [0.65, 0.75, 0.85], reps: 5 },
+    "Week Two": { percentages: [0.7, 0.8, 0.9], reps: 3 },
+    "Week Three": { percentages: [0.75, 0.85, 0.95], reps: 1 },
+    "Week Four": { percentages: [0.4, 0.5, 0.6], reps: 5 },
   };
 
   return (
@@ -44,7 +50,7 @@ const LiftTable = ({ liftMaxState, lifts }) => {
             const tableHead = `table-head-`;
 
             return (
-              <th id={tableHead + lift} key={randomKeyGenerator()}>
+              <th id={tableHead + lift} key={tableHead + lift}>
                 <h2 style={{ textTransform: "capitalize" }}>{lift}</h2>
                 <TrainingMax liftValue={liftMaxState[lift + trainingTag]} />
               </th>
@@ -55,14 +61,26 @@ const LiftTable = ({ liftMaxState, lifts }) => {
       <tbody>
         {Object.entries(weeklyPercentages).map(([key, value]) => {
           return (
-            <tr key={randomKeyGenerator()}>
-              {lifts.map((lift) => {
+            <tr key={key + value}>
+              {/* {lifts.map((lift) => {
                 return (
                   <WeeklyLifts
-                    key={randomKeyGenerator()}
+                    key={key + lift}
                     weekNum={key}
                     weeklyPercentages={value}
                     liftTrainingMax={isolateTrainingLift(lift, liftMaxState)}
+                    reps={repsByWeek[key]} //! Feels dirty. Reaching out of scope for a value?
+                  />
+                );
+              })} */}
+              {lifts.map((lift) => {
+                return (
+                  <WeeklyLifts
+                    key={key + lift}
+                    weekNum={key}
+                    weeklyPercentages={value.percentages}
+                    liftTrainingMax={isolateTrainingLift(lift, liftMaxState)}
+                    reps={value.reps}
                   />
                 );
               })}
