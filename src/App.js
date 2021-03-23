@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Form from "./components/Form";
-import Results from "./components/Results";
+import LiftTable from "./components/LiftTable";
+import styled, { createGlobalStyle } from "styled-components";
 
 function App() {
   const lifts = ["squat", "bench", "deadlift", "press"];
-  const defaultMax = 0;
+  const defaultMax = "";
   const trainingMaxMultiplier = 0.9;
 
   /*Conditions for input*/
@@ -20,6 +20,7 @@ function App() {
     const strVal = val.toString();
     return strVal.length <= maxLength;
   };
+  /****************/
 
   /*Curry Func*/
   const curryTwoValues = (f) => {
@@ -34,6 +35,9 @@ function App() {
   const isLengthValid = curryLength(validInputLength);
   /***********/
 
+  /*Function to check if input value meets all strict conditional functions and
+   at least one optional conditional function */
+
   const isValid = (val, [...strictFuncs], [...conditionalFuncs]) => {
     const isStrict = strictFuncs.map((e) => e(val)).every((e) => e === true);
     const areConditionsMet = conditionalFuncs.map((e) => e(val)).includes(true);
@@ -41,6 +45,7 @@ function App() {
   };
 
   // Initializes default state values based on the lifts array and defaultMax value
+
   const setDefaultLifts = (arr, val) => {
     const initialObj = {};
     return arr.reduce((obj, item) => {
@@ -55,6 +60,7 @@ function App() {
   };
   /* Updates the state for both the original value passed into the input
    and calculates the training max for each lift based on the inputs value*/
+  //! Can this be purer???
   const handleChange = (e) => {
     const inputVal = e.target.value;
     if (
@@ -77,16 +83,46 @@ function App() {
     setDefaultLifts(lifts, defaultMax)
   );
 
+  // todo: Add ability to toggle certain lifts || add different ones
+  const [liftsState, setLiftsState] = useState(lifts);
+
   return (
-    <div className="App">
-      <Form
-        liftMaxState={liftMaxState}
-        lifts={lifts}
-        handleChange={handleChange}
-      />
-      <Results liftMaxState={liftMaxState} lifts={lifts} />
-    </div>
+    <AppWrapper>
+      <GlobalStyle />
+      <FlexWrap>
+        <LiftTable
+          liftMaxState={liftMaxState}
+          lifts={liftsState}
+          handleChange={handleChange}
+        />
+      </FlexWrap>
+    </AppWrapper>
   );
 }
+const AppWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: auto;
+  background-color: lightgray;
+  overflow: hidden;
+`;
+const FlexWrap = styled.div`
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+`;
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  *:before, *:after {
+    box-sizing: border-box
+  }
+`;
 
 export default App;

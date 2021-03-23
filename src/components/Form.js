@@ -1,8 +1,9 @@
 import LiftMaxInput from "./LiftMaxInput";
+import styled from "styled-components";
 
 const Form = ({ liftMaxState, handleChange, lifts }) => {
   return (
-    <form>
+    <FormWrapper>
       {lifts.map((lift) => {
         return (
           <LiftMaxInput
@@ -13,8 +14,16 @@ const Form = ({ liftMaxState, handleChange, lifts }) => {
           />
         );
       })}
-    </form>
+    </FormWrapper>
   );
 };
+
+const FormWrapper = styled.form`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  background-color: red;
+  padding: 10px 0px;
+`;
 
 export default Form;
