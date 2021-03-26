@@ -33,6 +33,8 @@ const WeeklyLifts = ({ weekNum, weeklyPercentages, liftTrainingMax, reps }) => {
 
 const Cell = styled.td`
   text-align: left;
+  border: 2px solid hsl(12, 45%, 13%);
+  padding: 10px;
 `;
 const List = styled.ol`
   /* display: flex;

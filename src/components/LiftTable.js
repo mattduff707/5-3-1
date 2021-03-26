@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import TrainingMax from "./TrainingMax";
 import WeeklyLifts from "./WeeklyLifts";
-import LiftMaxInput from "./LiftMaxInput";
+import TableHeadCell from "./TableHeadCell";
 
 const LiftTable = ({ liftMaxState, lifts, handleChange }) => {
   const weeklyPercentages = {
@@ -16,26 +15,19 @@ const LiftTable = ({ liftMaxState, lifts, handleChange }) => {
       <TableHead>
         <tr>
           {lifts.map((lift, index, arr) => {
-            const tableHead = `-table-head`;
             const trainingMax = liftMaxState[lift].trainingMax;
             const trueMax = liftMaxState[lift].trueMax;
             const columnPercentage = String((1 / arr.length) * 100) + "%";
+            const tableHead = "-table-head";
             return (
-              <HeadCell cellWidth={columnPercentage} key={lift + tableHead}>
-                <LiftHeader>{lift}</LiftHeader>
-                <LiftMaxInput
-                  key={lift}
-                  liftName={lift}
-                  liftValue={trueMax}
-                  handleChange={handleChange}
-                />
-                <TrainingMax
-                  id={lift + tableHead}
-                  key={lift + tableHead}
-                  lift={lift}
-                  liftValue={trainingMax}
-                />
-              </HeadCell>
+              <TableHeadCell
+                key={lift + tableHead}
+                lift={lift}
+                trueMax={trueMax}
+                trainingMax={trainingMax}
+                cellWidth={columnPercentage}
+                handleChange={handleChange}
+              />
             );
           })}
         </tr>
@@ -65,25 +57,22 @@ const LiftTable = ({ liftMaxState, lifts, handleChange }) => {
 
 const Table = styled.table`
   width: 100%;
-  border: blue solid 2px;
-  & > thead,
-  tbody {
-    background-color: orange;
+  border-collapse: collapse;
+
+  & > thead {
+    background-color: hsl(183, 25%, 33%);
+    color: hsl(35, 53%, 67%);
+    border: 3px solid hsl(12, 45%, 13%);
+  }
+  & > tbody {
+    background-color: hsl(14, 31%, 43%);
+    color: hsl(35, 53%, 77%);
+    border: 3px solid hsl(12, 45%, 13%);
   }
 `;
 const TableHead = styled.thead`
   height: 150px;
   max-width: 100%;
-`;
-const HeadCell = styled.th`
-  width: ${(props) => props.cellWidth};
-  border: 2px solid red;
-  text-align: left;
-  padding-left: 10px;
-`;
-const LiftHeader = styled.h2`
-  text-transform: capitalize;
-  padding-bottom: 10px;
 `;
 
 export default LiftTable;

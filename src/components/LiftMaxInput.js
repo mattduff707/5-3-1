@@ -9,7 +9,7 @@ const LiftMaxInput = ({ liftName, liftValue, handleChange }) => {
   return (
     <div>
       <label style={{ textTransform: "capitalize" }} htmlFor={liftName}>
-        True Max:
+        True Max:{" "}
       </label>
       <StyledInput
         min={inputMin}

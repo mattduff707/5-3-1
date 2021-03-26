@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LiftTable from "./components/LiftTable";
+import AppTitle from "./components/AppTitle";
 import styled, { createGlobalStyle } from "styled-components";
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
     <AppWrapper>
       <GlobalStyle />
       <FlexWrap>
+        <AppTitle />
         <LiftTable
           liftMaxState={liftMaxState}
           lifts={liftsState}
