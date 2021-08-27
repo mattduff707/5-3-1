@@ -8,8 +8,8 @@
 
 ## Key Features
 
-- Conditional inputs [Code Snippet]()
-- Dynamic Results [Code Snippet]()
+- Conditional inputs [Code Snippet](https://github.com/mattduff707/5-3-1/blob/e6919950dc84ec5630ae6886bfb13955bb5fa119/src/App.js#L11-L64)
+- Dynamic Results [Code Snippet](https://github.com/mattduff707/5-3-1/blob/e6919950dc84ec5630ae6886bfb13955bb5fa119/src/components/LiftTable.js#L6-L60)
 
 ---
 
@@ -26,7 +26,7 @@
 
 - I am currently learning about testing in React as I know it is pivotal in professional production. So I will likely return to add a solid test suite.
 - I would like to add the option to select from the multiple percentage schemes present in the 5/3/1 program
-- Refactor certain components [Code Snippet]()
+- Refactor App component. Bloated with functions.
 
 ---
 
