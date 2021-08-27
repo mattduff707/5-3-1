@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const WeeklyLifts = ({ weekNum, weeklyPercentages, liftTrainingMax, reps }) => {
-  const calculateLift = (multiplier, liftMax) =>
-    Math.round(multiplier * liftMax);
+  const calculateLift = (multiplier, liftMax) => Math.round(multiplier * liftMax);
   return (
     <Cell>
       <h3>{weekNum}</h3>

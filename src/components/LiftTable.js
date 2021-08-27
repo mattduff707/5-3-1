@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import WeeklyLifts from "./WeeklyLifts";
-import TableHeadCell from "./TableHeadCell";
+import styled from 'styled-components';
+import WeeklyLifts from './WeeklyLifts';
+import TableHeadCell from './TableHeadCell';
 
 const LiftTable = ({ liftMaxState, lifts, handleChange }) => {
   const weeklyPercentages = {
-    "Week One": { percentages: [0.65, 0.75, 0.85], reps: 5 },
-    "Week Two": { percentages: [0.7, 0.8, 0.9], reps: 3 },
-    "Week Three": { percentages: [0.75, 0.85, 0.95], reps: 1 },
-    "Week Four": { percentages: [0.4, 0.5, 0.6], reps: 5 },
+    'Week One': { percentages: [0.65, 0.75, 0.85], reps: 5 },
+    'Week Two': { percentages: [0.7, 0.8, 0.9], reps: 3 },
+    'Week Three': { percentages: [0.75, 0.85, 0.95], reps: 1 },
+    'Week Four': { percentages: [0.4, 0.5, 0.6], reps: 5 },
   };
 
   return (
@@ -17,8 +17,8 @@ const LiftTable = ({ liftMaxState, lifts, handleChange }) => {
           {lifts.map((lift, index, arr) => {
             const trainingMax = liftMaxState[lift].trainingMax;
             const trueMax = liftMaxState[lift].trueMax;
-            const columnPercentage = String((1 / arr.length) * 100) + "%";
-            const tableHead = "-table-head";
+            const columnPercentage = String((1 / arr.length) * 100) + '%';
+            const tableHead = '-table-head';
             return (
               <TableHeadCell
                 key={lift + tableHead}
@@ -61,12 +61,12 @@ const Table = styled.table`
 
   & > thead {
     background-color: hsl(183, 25%, 33%);
-    color: hsl(35, 53%, 67%);
+    color: hsl(35, 53%, 92%);
     border: 3px solid hsl(12, 45%, 13%);
   }
   & > tbody {
     background-color: hsl(14, 31%, 43%);
-    color: hsl(35, 53%, 77%);
+    color: hsl(35, 53%, 92%);
     border: 3px solid hsl(12, 45%, 13%);
   }
 `;
