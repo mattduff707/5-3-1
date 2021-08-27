@@ -38,31 +38,14 @@ function App() {
 
   /*Function to check if input value meets all strict conditional functions and
    at least one optional conditional function */
-
   const isValid = (val, [...strictFuncs], [...conditionalFuncs]) => {
     const isStrict = strictFuncs.map((e) => e(val)).every((e) => e === true);
     const areConditionsMet = conditionalFuncs.map((e) => e(val)).includes(true);
     return isStrict && areConditionsMet ? true : false;
   };
 
-  // Initializes default state values based on the lifts array and defaultMax value. This step was taken for scalability
-
-  const setDefaultLifts = (arr, val) => {
-    const initialObj = {};
-    return arr.reduce((obj, item) => {
-      return {
-        ...obj,
-        [item]: {
-          trueMax: val,
-          trainingMax: val * trainingMaxMultiplier,
-        },
-      };
-    }, initialObj);
-  };
-  
   /* Updates the state for both the original value passed into the input
    and calculates the training max for each lift based on the inputs value*/
-
   const handleChange = (e) => {
     const inputVal = e.target.value;
     if (isValid(inputVal, [isLengthValid, isNotSpace], [isEmptyStr, isNumber])) {
@@ -78,11 +61,28 @@ function App() {
       });
     }
   };
+  /*******/
+
+  // Initializes default state values based on the lifts array and defaultMax value. This step was taken for scalability
+
+  const setDefaultLifts = (arr, val) => {
+    const initialObj = {};
+    return arr.reduce((obj, item) => {
+      return {
+        ...obj,
+        [item]: {
+          trueMax: val,
+          trainingMax: val * trainingMaxMultiplier,
+        },
+      };
+    }, initialObj);
+  };
+  /******/
 
   const [liftMaxState, setLiftMaxState] = useState(setDefaultLifts(lifts, defaultMax));
 
   // todo: Add ability to toggle certain lifts || add different ones
-  const [liftsState, setLiftsState] = useState(lifts);
+  const [liftsState] = useState(lifts);
 
   return (
     <AppWrapper>
@@ -102,7 +102,8 @@ const AppWrapper = styled.main`
   min-height: 100vh;
   width: auto;
   background-color: lightgray;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: auto;
 `;
 const FlexWrap = styled.div`
   width: 1200px;

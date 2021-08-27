@@ -1,6 +1,34 @@
-# Getting Started with Create React App
+## Process I followed
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Sketched a rough design
+- Identified logic to implement: controlled inputs with conditions, dynamic results and scalability
+- Broke it down into manageable tasks
+
+---
+
+## Key Features
+
+- Conditional inputs [Code Snippet]()
+- Dynamic Results [Code Snippet]()
+
+---
+
+## Why I built it this way
+
+- I decided to use an HTML table for this app since it makes the most sense semantically.
+- Even though styling was not particularly important in this project, I decided to include styled components. It adds to the scalability if I come back to add more features in the future that require the magic of SC.
+- As a small app, useState seemed sufficient for the tasks of this project. Libraries like redux would just add unnecessary bloat.
+- This app also served as practice of functional programming principles. I attempted to keep functions pure, utilized built in methods for looping and avoided mutation.
+
+---
+
+## Potential Changes
+
+- I am currently learning about testing in React as I know it is pivotal in professional production. So I will likely return to add a solid test suite.
+- I would like to add the option to select from the multiple percentage schemes present in the 5/3/1 program
+- Refactor certain components [Code Snippet]()
+
+---
 
 ## Available Scripts
 

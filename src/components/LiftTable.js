@@ -3,6 +3,10 @@ import WeeklyLifts from './WeeklyLifts';
 import TableHeadCell from './TableHeadCell';
 
 const LiftTable = ({ liftMaxState, lifts, handleChange }) => {
+  /*
+  lifts = ['squat', 'bench', 'deadlift', 'press'];
+  Found in App component
+   */
   const weeklyPercentages = {
     'Week One': { percentages: [0.65, 0.75, 0.85], reps: 5 },
     'Week Two': { percentages: [0.7, 0.8, 0.9], reps: 3 },
