@@ -30,6 +30,11 @@
 
 ---
 
+## What is the 5/3/1?
+
+The 5/3/1 is a strength training program. It works in 4 week blocks. Each week you will lift heavier weight. You must know your 1 rep max for each lift of the program: squat, deadlift, bench press and strict press. Take 90% of that number for each lift, this new value is your training max. You then break the training max down by various percentage schemes to dictate the weight of each lift.  
+Check out the book [here](https://www.jimwendler.com/collections/books-programs/products/5-3-1-second-edition-hard-copy)!
+
 ## Available Scripts
 
 In the project directory, you can run:
