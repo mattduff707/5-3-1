@@ -2,7 +2,7 @@
 
 - Sketched a rough design
 - Identified logic to implement: controlled inputs with conditions, dynamic results and scalability
-- Broke it down into manageable tasks
+- Broke down the design and logic into manageable tasks
 
 ---
 
