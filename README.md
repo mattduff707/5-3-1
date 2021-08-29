@@ -1,7 +1,7 @@
 ## Process I followed
 
 - Sketched a rough design
-- Identified logic to implement: controlled inputs with conditions, dynamic results and scalability
+- Identified key factors to implement: controlled inputs with conditions, dynamic results and scalable design
 - Broke down the design and logic into manageable tasks
 
 ---
